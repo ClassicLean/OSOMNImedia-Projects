@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Description Beautifier</title>
+
+	<style type="text/css">
+
+		textarea
+		{
+			resize: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Description Beautifier</h1>
+	<textarea id = "descId" rows = "10" cols = "70">An awesome new look from Quiksilver is the Commander MT4 Screen Tee. Crafted from a fine ring-spun combed cotton jersey fabric.</textarea>
+	<textarea id = "detId" rows = "10" cols = "70">
+ brand logo graphic at front chest.
+ribbed crew neck.
+ short sleeves.
+ straight hemline.
+50% a / 40%  b / 10%c.
+machine wash cold,
+ tumble dry low.
+ imported.
+</textarea>
+	<br>
+	<input type = "submit" value = "Generate!" onclick="genRes();">
+	<br>
+	<textarea id = "resId" rows = "10" cols = "144"></textarea>
+
+<script>
+	'use strict';
+	let hidLine;
+
+	function genRes()
+	{
+		document.getElementById('resId').value = descGen() + removeLine();
+	}
+
+	function removeLine()
+	{
+		return'<br>' + addSpace().replace(/(\r\n\t|\n|\r\t)/gm,"<br>");
+	}
+
+	function addSpace()
+	{
+		let newLine = '';
+		let newStr = '';
+		let removedPunctuation = removePunc();
+		let flag = false;
+		hiddenLine();
+
+		for(let counter = 0; counter<removedPunctuation.length;counter++)
+		{
+			newLine += removedPunctuation.charAt(counter);
+
+			if(removedPunctuation.charAt(counter) == '\n' && flag == false)
+			{
+				newLine = newLine.charAt(0).toUpperCase() + newLine.slice(1);
+				newLine = numSpace(newLine);
+				newStr += newLine;
+				newLine = '';
+				flag = true;
+			}
+
+			else if(removedPunctuation.charAt(counter) == '\n')
+			{
+				newLine = newLine.charAt(0).toUpperCase() + newLine.slice(1);
+				newLine = numSpace(newLine);
+				newStr += ' ' + newLine;
+				newLine = '';
+			}
+		}
+		return newStr + ' ' + hidLine;
+	}
+
+	function numSpace(numLine)
+	{
+		let percentUpper;
+		let num;
+		for(let newCounter = 0; newCounter < numLine.length; newCounter++)
+		{
+			if(numLine.charAt(newCounter) == '%')
+			{
+				if(numLine.charAt(newCounter+1) == ' ')
+				{
+					var spaceCounter = newCounter+1;
+					while(numLine.charAt(spaceCounter) == ' ')
+					{
+						spaceCounter++;
+					}
+					percentUpper = numLine.charAt(spaceCounter).toUpperCase() + numLine.slice(spaceCounter+1);
+					num = numLine.slice(0,newCounter+2);
+					numLine =  num + percentUpper;
+				}
+
+				else
+				{
+					percentUpper = numLine.charAt(newCounter+1).toUpperCase() + numLine.slice(newCounter+2);
+					num = numLine.slice(0,newCounter+1);
+					numLine =  num +' '+ percentUpper;
+				}
+			}
+		}
+				return numLine;
+	}
+
+	function hiddenLine()
+	{
+		let newLine = '';
+		let newStr = '';
+		let removedPunctuation = removePunc();
+
+		for(let counter = 0; counter<removedPunctuation.length;counter++)
+		{
+			newLine += removedPunctuation.charAt(counter);
+			if(removedPunctuation.charAt(counter) == '\n')
+			{
+				newLine = newLine.charAt(0).toUpperCase() + newLine.slice(1);
+				newStr += newLine;
+				newLine = '';
+			}
+		}
+		hidLine = removedPunctuation.substring(newStr.length,removedPunctuation.length);
+		hidLine = hidLine.charAt(0).toUpperCase() + hidLine.slice(1);
+
+		return hidLine;
+	}
+
+	function removePunc()
+	{
+		return removeSpace().replace(/([,.])$/igm, "").trim();
+	}
+
+	function removeSpace()
+	{
+		let detText = document.getElementById('detId').value;
+		return detText.replace(/^( )|( )$/gm,'');
+	}
+
+	function descGen()
+	{
+		let descText = document.getElementById('descId').value;
+		return descText + '<br>' ;
+	}
+
+</script>
+</body>
+</html>

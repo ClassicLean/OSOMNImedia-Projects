@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tag Generator</title>
+
+	<style type="text/css">
+
+		textarea
+		{
+			resize: none;
+		}
+	</style>
+</head>
+<body>
+  <textarea id = "replaceID" rows = "10" cols = "70">bikini
+long sleeve shirts
+short sleeve shirt</textarea>
+  <textarea id = "tagsID" rows = "10" cols = "70">_____ where to buy
+_____ review
+_____ on sale
+_____ new styles
+_____ local stores
+_____ discounted
+_____ coupon
+_____ closeout
+new _____
+</textarea>
+	<br />
+	<input type = "submit" value = "Generate!" onclick="generateResult();">
+	<br>
+  <textarea id = "resultID" rows = "10" cols = "70"></textarea>
+</body>
+<script>
+	'use strict';
+	function replace()
+	{
+		let replacement = document.getElementById('replaceID').value.split('\n');
+		let tags = document.getElementById('tagsID').value;
+		let result = '';
+		for(let counter of replacement) result += tags.replace(/_____/g,counter.split(' ').map(item => item[0].toUpperCase()+item.slice(1)).join(' '));
+		return result.trim();
+	}
+	function removeNewLine()
+	{
+		return replace().replace(/(\r\n\t|\n|\r\t)/gm,", ");
+	}
+
+	function generateResult()
+	{
+		document.getElementById('resultID').value = removeNewLine();
+	}
+</script>
+</html>

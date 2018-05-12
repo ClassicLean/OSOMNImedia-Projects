@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Meta Description Generator</title>
+
+	<style type="text/css">
+
+		textarea
+		{
+			resize: none;
+		}
+	</style>
+</head>
+<body>
+  <textarea id = "metaDescriptionID" rows = "10" cols = "70">
+Quicksilver Summer 2018 Apparel Lifestyle Mad Wax Apparels Collection
+Omni Original T-Shirt
+Wave Slide Pant
+Omni Hazard LS T-Shirts
+All Over Mad Wax Tees
+Omni Hazard LS Short Sleeve Shirt
+Close Caller Cap
+Diamond Tail Hoodie
+Malako Beach Shirt
+Ghetto Session Tee
+Dumb And Surfer
+Mad Wax Jacket
+Wave Slide Hoodies
+Jackets
+	</textarea>
+	<br />
+	<input type = "submit" value = "Generate!" onclick="removeNewLine();">
+	<br>
+  <textarea id = "resultID" rows = "10" cols = "70"></textarea>
+	<br />
+	<h4>Character Count</h4> <p id = "characterCountID"></p>
+</body>
+<script>
+	'use strict';
+	function removeNewLine()
+	{
+		let metaDescription = document.getElementById("metaDescriptionID").value.trim();
+		document.getElementById('resultID').value = metaDescription.replace(/(\r\n\t|\n|\r\t)/gm," ");
+		document.getElementById('characterCountID').innerHTML = metaDescription.length;
+	}
+	/*
+	TODO
+	Make titlecategory -> title category
+	*/
+</script>
+
+</html>
