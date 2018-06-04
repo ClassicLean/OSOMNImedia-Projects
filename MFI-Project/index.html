@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>MFI</title>
+	<style type="text/css">
+		html,
+		body {
+			height: 100%;
+		}
+
+		iframe {
+			overflow-x: hidden;
+			overflow-y: hidden;
+		}
+
+		p {
+			font-family: 'Work Sans', sans-serif;
+			color: black;
+			display: inline-block;
+		}
+
+		table {
+			width: 100%;
+		}
+
+		td {
+			font-family: 'Work Sans', sans-serif;
+			padding: 3px;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		iframe {
+			width: 101%;
+			height: 101%;
+		}
+
+		a:visited,
+		a:hover,
+		a:link,
+		a:active {
+			color: black;
+		}
+
+		/* Classes */
+
+		.btn-outline-secondary:active,
+		.btn-outline-secondary:focus,
+		.btn-outline-secondary.active {
+			background: #337ab7;
+			border: 0px;
+			color: white;
+			text-decoration: none;
+		}
+
+		.drop {
+			background: transparent;
+			border: 0;
+			color: black;
+			width: 100%;
+		}
+
+		.icon {
+			height: 32px;
+			width: 32px;
+		}
+
+		.btn {
+			text-decoration: none;
+		}
+
+
+		/* ID */
+
+		#tr_special {
+			height: 20px;
+		}
+
+		#container1 {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+
+</style>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+<script>
+	'use strict';
+
+	function disableMain(value){
+		if(value == 'hide'){
+			document.getElementById("category").style.display = "none";
+
+			document.getElementById("btnCategory").style.display = "none";			
+			document.getElementById("btnReport").style.display = "none";
+			document.getElementById("btnUpload").style.display = "none";
+			document.getElementById("btnUploadMaster").style.display = "none";
+			document.getElementById("btnUploadHealth").style.display = "none";			
+		}
+		else{
+			document.getElementById("category").style.display = "block";
+
+			document.getElementById("btnCategory").style.display = "inline-block";
+			document.getElementById("btnReport").style.display = "inline-block";
+			document.getElementById("btnUpload").style.display = "inline-block";
+			document.getElementById("btnUploadMaster").style.display = "inline-block";
+			document.getElementById("btnUploadHealth").style.display = "inline-block";			
+		}
+	}
+
+    function tables(value){
+    	if(value == 'b'){
+    		document.getElementById('show').src = 'http://osomniserver/toolsforyou/masterfile-project/brands.php';
+    	}
+    	else if(value == 'v') {
+    		document.getElementById('show').src = "http://osomniserver/toolsforyou/masterfile-project/vendors.php";
+    	}
+    	else if(value == 'a') {
+    		document.getElementById('show').src = "http://osomniserver/toolsforyou/masterfile-project/all.php";
+    	}
+    }
+
+	$(document).ready(function(){
+		$('.btn-outline-secondary').click(function () {
+			$('.btn-outline-secondary.active').removeClass("active");
+			$(this).addClass("active");
+		})
+	});
+</script>
+
+</head>
+
+<body style="background: white; height: 100%" onload="load()">
+
+	<table style="background: white; width: 100%" border="0">
+		<tr>
+				<td style="font-size: 30px; height: 80; padding: 20px; width: 100%" colspan="7"><a href="index.html">Masterfile Inventory</a></td>
+		</tr>
+		<tr height="50px">
+			<td style="background: white; color: black; padding-right: 30px; width: 8%">
+				<span style="background: transparent; color: #383838;" id="category">CATEGORY</span>				
+			</td>
+			<td style="width: 10%; text-align: left; padding-left: 13px">
+				<div id="btnCategory">
+					<button type="button" class="btn btn-outline-secondary" onclick="tables('b')"> Brands </button>
+					<button type="button" class="btn btn-outline-secondary" onclick="tables('v')"> Vendors </button>
+					<button type="button" class="btn btn-outline-secondary" onclick="tables('a')"> All </button>
+				</div>
+			</td>
+			<td style="width: 30%"> </td>
+			<td style="width: 2%">
+				<a href="reports.php" target="show">
+				<button type="button" class="btn btn-outline-secondary"  onclick="disableMain('hide')" id="btnReport">Report</button>
+			</a>
+			</td>
+			<td style="width: 2%">
+				<a href="upload_master.php" target="show">
+				<button type="button" class="btn btn-outline-secondary"  id="btnUploadMaster">Upload Masterfile</button>
+			</a>
+			</td>
+			<td style="width: 2%">
+				<a href="upload.php" target="show">
+				<button type="button" class="btn btn-outline-secondary"  id="btnUpload">Upload MFI</button>
+			</a>
+			</td>
+			<td style="padding-right: 1%; width: 2%">
+				<a href="upload_health.php" target="show">
+				<button type="button" class="btn btn-outline-secondary"  id="btnUploadHealth">Upload Health</button>
+			</a>
+			</td>			
+		</tr>
+
+	</table>
+
+	<div id="container1">
+		<iframe src="welcome.html" name="show" id="show" frameborder="0"></iframe>
+	</div>
+
+</body>
+
+</html>

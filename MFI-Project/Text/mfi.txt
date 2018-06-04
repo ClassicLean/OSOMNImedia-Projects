@@ -1,0 +1,2 @@
+sku	fnsku	asin	product-name	condition	your-price	mfn-listing-exists	mfn-fulfillable-quantity	afn-listing-exists	afn-warehouse-quantity	afn-fulfillable-quantity	afn-unsellable-quantity	afn-reserved-quantity	afn-total-quantity	per-unit-volume	afn-inbound-working-quantity	afn-inbound-shipped-quantity	afn-inbound-receiving-quantity
+0021-104-FBA	X000YDOFEB	B005MHI8S2	O'Neal Bro	New	35.99	No		Yes	0	0	0	0	0	0.03	0	0	0

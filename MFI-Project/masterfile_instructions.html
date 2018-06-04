@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+	body, div {
+		font-family: 'Work Sans', sans-serif;	
+	}
+
+	#myBtn {
+	    display: none; /* Hidden by default */
+	    position: fixed; /* Fixed/sticky position */
+	    bottom: 20px; /* Place the button at the bottom of the page */
+	    right: 30px; /* Place the button 30px from the right */
+	    z-index: 99; /* Make sure it does not overlap */
+	    border: none; /* Remove borders */
+	    outline: none; /* Remove outline */
+	    background: transparent; /* Set a background color */	    
+	    cursor: pointer; /* Add a mouse pointer on hover */	    	    
+	}
+</style>
+
+<script type="text/javascript">
+	window.onscroll = function() {scrollFunction()};
+
+	function scrollFunction() {
+	    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+	        document.getElementById("myBtn").style.display = "block";
+	    } else {
+	        document.getElementById("myBtn").style.display = "none";
+	    }
+	}
+
+	function topFunction() {
+	    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+	}
+
+</script>
+
+<!-- Bootstrap -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+</head>
+
+<body style="background: white; height: 100%">
+	<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="images/top.png" style="height: 50px; width: 50px"/></button>
+
+	<div class="jumbotron" style="background: #f1f1f1; margin-bottom: 2%;">
+	  <h1>Masterfile Instructions</h1> 
+	  <p>To significantly reduce processing time and avoid upload errors, please follow the instructions on uploading the Excel of the Masterfile.</p> 
+	</div>
+
+	<h4 style="padding-left: 2%"> Table of contents </h4>
+
+	<div class="list-group" style="padding: 0 3% 2% 2%">
+	  <a href="#first" class="list-group-item list-group-item-action">Step 1. Make a copy of the original file</a>
+	  <a href="#second" class="list-group-item list-group-item-action">Step 2. Delete unnecessary columns</a>
+	  <a href="#third" class="list-group-item list-group-item-action">Step 3. Keep original number format of column ("product-id")</a>
+	  <a href="#fourth" class="list-group-item list-group-item-action">Step 4. Saving as .csv</a>
+	</div>
+
+	<div class="alert alert-danger" style="margin: 0 3% 0 2%">		
+		<strong>Save it until 100,000 rows.</strong> If the original has more than 100,000 rows, then please separate the other rows to another file (including the column headers).
+	</div>
+
+	<div class="jumbotron" style="background: white; margin-bottom: 1%" id="first">
+	  <table style="width: 100%">
+	  	<tr>
+	  		<td style="padding-right: 50px; text-align: right; width: 10%"> <h4>Step 1</h4> </td>
+	  		<td style="width: 80%"> <b>Make a copy of the original file.</b>
+	  			<br>Several changes will be made and might affect the data.<br> Although optional, it is highly recommended. </td>
+	  	</tr>
+	  </table>
+	</div>
+
+	<div class="jumbotron" style="background: white; margin-bottom: 1%" id="second">
+	  <table style="width: 100%">
+	  	<tr>
+	  		<td style="padding-right: 50px; text-align: right; width: 10%"> <h4>Step 2</h4> </td>
+	  		<td style="width: 80%"> <b>Delete unnecessary columns.</b>
+	  			<br> Please delete the <u>first</u>, <u>item-description</u>, <u>ALL other link views</u>, and <u>fulfillment-channel</u> columns (if they exist).
+	  			<br> This is required because of the conversion format and to decrease file size.
+	  		</td>
+	  	</tr>
+	  	<tr>
+	  		<td></td>
+	  		<td style="padding-top: 30px"> <img src="images/step2.jpg" alt="step2.jpg"/> </td>
+	  	</tr>
+	  	<tr>
+	  		<td></td>
+	  		<td style="padding-top: 30px"> The columns needed are:
+	  			<ul>
+	  				<li>Vendor/Distributor</li>
+	  				<li>Brand</li>
+	  				<li>Category</li>
+	  				<li>SKU</li>
+	  				<li>MFR</li>
+	  				<li>Product Name</li>
+	  				<li>Retail/MSRP</li>
+	  				<li>FBA Price</li>
+	  				<li>Original Cost</li>
+	  				<li>Main - URL to Image</li>
+	  				<li>Other View1 - URL to Image/ image link</li>
+	  				<li>Other View2 - URL to Image/ image link</li>
+	  				<li>Other View3 - URL to Image/ image link</li>
+	  				<li>Other View4 - URL to Image/ image link</li>
+  					<li>Season/Collection</li>
+  					<li>Carryover/Non-Carryover</li>
+  					<li>Product ID</li>
+  					<li>FNSKU</li>
+  					<li>ASIN</li>
+  					<li>Date Created</li>
+  					<li>Stock</li>
+  					<li>MAP Policy</li>
+  					<li>MAP Price</li>
+  					<li>MAP Status</li>
+  					<li>New Cost</li>
+	  			</ul>
+			</td>
+	  	</tr>
+	  </table>
+	</div>
+
+	<div class="jumbotron" style="background: white; margin-bottom: 1%" id="third">
+	  <table style="width: 100%">
+	  	<tr>
+	  		<td style="padding-right: 50px; text-align: right; width: 10%;"> <h4>Step 3</h4> </td>
+	  		<td style="width: 80%"> <b>Keep original number format of column ("product-id").</b>
+	  			<br>To avoid the product ID to be converted to scientific notation (cases for large numbers), the column should be changed that appropriates the .csv format as well.
+	  		</td>
+	  	</tr>
+	  	<tr>
+	  		<td></td>
+	  		<td>
+	  			<br><br> <b>Step 3.1.</b> Highlight the product ID column.
+	  			<br><br> <b>Step 3.2.</b> Go to Data > Text to Columns (Data Tools) <br> <img src="images/step3_2.jpg" alt="step3_2.jpg" style="padding-top: 10px"/>
+	  			<br><br> <b>Step 3.3.</b> Choose Delimited. Click Next. <br> <img src="images/step3_3.jpg" alt="step3_3.jpg"  style="padding-top: 10px"/>
+	  			<br><br> <b>Step 3.4.</b> Check Tab. For text qualifier, choose the double quotes ("). <br> <img src="images/step3_4.jpg" alt="step3_4.jpg"  style="padding-top: 10px"/>
+	  			<br><br> <b>Step 3.5.</b> For column data format, choose Text. Then finish. <br> <img src="images/step3_5.jpg" alt="step3_5.jpg"  style="padding-top: 10px"/>
+	  		</td>
+	  	</tr>
+	  </table>
+	</div>
+
+	<div class="jumbotron" style="background: white; margin-bottom: 1%" id="fourth">
+	<table style="width: 100%">
+		<tr>
+			<td style="padding-right: 50px; text-align: right; width: 10%"> <h4>Step 4</h4> </td>
+			<td style="width: 80%"> <b>Saving as .csv</b>
+				<br> When saving, save it as <b>CSV (Comma delimited) (*.csv)</b>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<div class="alert alert-info" style="margin-top: 1%; width: 50%">
+			    	<strong>Note!</strong> You should never open .csv with Excel unless necessary (if so, repeat Step 3). <br> You can open .csv files with text editors such as Notepad.
+			 	</div>
+			</td>
+		</tr>
+	</table>
+	</div> 
+
+ 	<br><br><br>
+
+
+</body>
+</html>
