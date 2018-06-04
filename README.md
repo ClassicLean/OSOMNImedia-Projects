@@ -2,7 +2,7 @@
 
 $MFI PROJECT uploads and then displays the uploaded data.
 
-Features
+MFI Project Features
 --------
 
 - Upload Masterfile
